@@ -23,7 +23,7 @@ async function readCode( ) {
     try {
         const packageJsonPath = path.join(process.cwd(), 'package.json');
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-        codeExercise = packageJson.code || null;
+        codeExercise = await packageJson.code || null;
     } catch (error) {
         console.error("⚠️ No se pudo leer package.json:", error.message);
     } finally {
@@ -36,7 +36,7 @@ async function getGithubEmail() {
     let githubEmail = null;
 
     try {
-        githubEmail = execSync('git config user.email', { encoding: 'utf-8' }).trim() || null;
+        githubEmail = await execSync('git config user.email', { encoding: 'utf-8' }).trim() || null;
     } catch (error) {
         console.error("⚠️ No se pudo obtener el usuario de GitHub:", error.message);
     } finally {
