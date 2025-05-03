@@ -3,11 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-async function sendResults( nameStudent, codeExercise ) {
+async function sendResults( email, codeExercise ) {
 
   const data = {
-    name: nameStudent,
-    codeExercise: codeExercise,
+    email: email,
     date: new Date().toISOString()
   };
 
