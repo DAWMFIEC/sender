@@ -2,9 +2,8 @@
   "name": "send-result",
   "version": "1.0.0",
   "description": "A Node.js project",
-  "main": "index.js",
+  "main": "send-results.js",
   "scripts": {
-    "start": "node send-results.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
