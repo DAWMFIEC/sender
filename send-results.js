@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-async function enviarResultado( nameStudent, codeExercise ) {
+async function sendResults( nameStudent, codeExercise ) {
+
   const data = {
     name: nameStudent,
     codeExercise: codeExercise,
@@ -15,4 +16,32 @@ async function enviarResultado( nameStudent, codeExercise ) {
   }
 }
 
-module.exports = enviarResultado;
+async function readCode( ) {
+
+    let codeExercise = null;
+
+    try {
+        const packageJsonPath = path.join(process.cwd(), 'package.json');
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        codeExercise = packageJson.code || null;
+    } catch (error) {
+        console.error("⚠️ No se pudo leer package.json:", error.message);
+    } finally {
+        return codeExercise;
+    }
+}
+
+async function getGithubEmail() {
+
+    let githubEmail = null;
+
+    try {
+        githubEmail = execSync('git config user.email', { encoding: 'utf-8' }).trim() || null;
+    } catch (error) {
+        console.error("⚠️ No se pudo obtener el usuario de GitHub:", error.message);
+    } finally {
+        return githubEmail;
+    }
+}
+
+module.exports = { readCode, sendResults, getGithubEmail };
