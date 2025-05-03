@@ -8,7 +8,7 @@ async function enviarResultado( nameStudent, codeExercise ) {
   };
 
   try {
-    const response = await axios.post('https://dawm-c9533-default-rtdb.firebaseio.com/homeworks.json', data); // Cambia por tu endpoint real
+    const response = await axios.post('https://dawm-c9533-default-rtdb.firebaseio.com/paoi2025.json', data); // Cambia por tu endpoint real
     console.log("Resultado enviado:", response.status);
   } catch (error) {
     console.error("Error al enviar resultado:", error.message);
